@@ -1,0 +1,48 @@
+:root {
+  --purple: #925bd9;
+  --purple-dark: #7a3fc4;
+  --text: #2f2b38;
+  --text-muted: #6b6375;
+  --bg: #f6f3fb;
+  --card-bg: #ffffff;
+  --border: #e3ddef;
+  --danger-bg: #fdeef0;
+  --danger-text: #b3364a;
+
+  font: 16px/1.5 "Poppins", system-ui, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --purple: #a878e8;
+    --purple-dark: #c084fc;
+    --text: #e7e4ee;
+    --text-muted: #a79fb3;
+    --bg: #17151d;
+    --card-bg: #201d29;
+    --border: #322c3d;
+    --danger-bg: #3a2129;
+    --danger-text: #ef8fa1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  margin: 0;
+}
