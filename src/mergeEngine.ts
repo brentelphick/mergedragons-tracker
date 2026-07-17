@@ -23,7 +23,6 @@ export interface Goal {
   name: string;
   description: string;
   wanted: number[];
-  needed?: number[];
 }
 
 export interface ChainData {
@@ -58,9 +57,7 @@ export function createChainData(
       },
     ],
   };
-  chainData.goals[0].needed = [...chainData.goals[0].wanted];
   chainData.goals[1].wanted[chain.levels.length - 1] = 1;
-  chainData.goals[1].needed = [...chainData.goals[1].wanted];
   console.log("createChainData", chainData);
   return chainData;
 }
@@ -101,23 +98,20 @@ export const CHAINS: Chain[] = [
   },
 ];
 
-export function calculateChainData(
-  chainId: string,
-  chainInfo: ChainData,
-): ChainData {
-  // Implementation for calculate2
-  if (!chainInfo) {
-    chainInfo = createChainData(chainId);
-  }
-
-  console.log("calculateChainData", chainId, chainInfo);
-  for (let goal of chainInfo.goals) {
-    goal.needed = computeNeeded(chainInfo.inventory.levelItems, goal.wanted);
-  }
-  return chainInfo;
+/**
+ * Computes, per goal in chainData.goals, how many of each level are still
+ * needed given the current inventory. This is derived data: it's computed
+ * fresh from ChainData rather than stored on it, so ChainData (inventory +
+ * goals' `wanted`) stays exactly what should be persisted, e.g. to
+ * localStorage, with nothing stale or computed mixed in.
+ */
+export function calculateGoalNeeds(chainData: ChainData): number[][] {
+  return chainData.goals.map((goal) =>
+    computeNeeded(chainData.inventory.levelItems, goal.wanted),
+  );
 }
 
-function computeNeeded(have: number[], wanted: number[]): number[] | undefined {
+function computeNeeded(have: number[], wanted: number[]): number[] {
   const needed: number[] = [...wanted];
   let index = needed.length - 1;
   needed[index] = Math.max(0, wanted[index] - have[index]);

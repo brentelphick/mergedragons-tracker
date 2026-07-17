@@ -1,22 +1,11 @@
 import { useMemo, useState } from "react";
 import {
   CHAINS,
-  calculateChainData,
+  calculateGoalNeeds,
   createChainData,
   type ChainData,
 } from "./mergeEngine";
 import "./App.css";
-
-// calculateChainData mutates the ChainData it's given (it sets goal.needed
-// in place), so we hand it a clone rather than the object living in state.
-// That keeps React state immutable, which is what useMemo/useState expect.
-function cloneChainData(data: ChainData): ChainData {
-  return {
-    chainId: data.chainId,
-    inventory: { levelItems: [...data.inventory.levelItems] },
-    goals: data.goals.map((goal) => ({ ...goal, wanted: [...goal.wanted] })),
-  };
-}
 
 function App() {
   const [currentChain, setCurrentChain] = useState(CHAINS[0]);
@@ -27,11 +16,17 @@ function App() {
     }),
   );
 
-  const currentChainData = useMemo(() => {
-    const stored =
-      chainDataMap[currentChain.id] ?? createChainData(currentChain.id);
-    return calculateChainData(currentChain.id, cloneChainData(stored));
-  }, [chainDataMap, currentChain.id]);
+  const currentChainData = useMemo(
+    () => chainDataMap[currentChain.id] ?? createChainData(currentChain.id),
+    [chainDataMap, currentChain.id],
+  );
+
+  // goalNeeds[goalIndex][levelIndex] — derived from currentChainData, never
+  // stored back onto it, so ChainData stays exactly what's safe to persist.
+  const goalNeeds = useMemo(
+    () => calculateGoalNeeds(currentChainData),
+    [currentChainData],
+  );
 
   const setHave = (index: number, value: number) => {
     const nextValue = Math.max(0, Math.floor(value) || 0);
@@ -125,8 +120,8 @@ function App() {
                       onChange={(e) => setHave(index, Number(e.target.value))}
                     />
                   </td>
-                  {currentChainData.goals.map((goal, goalIndex) => (
-                    <td key={goalIndex}>{goal.needed?.[index] ?? 0}</td>
+                  {currentChainData.goals.map((_, goalIndex) => (
+                    <td key={goalIndex}>{goalNeeds[goalIndex]?.[index] ?? 0}</td>
                   ))}
                 </tr>
               ))}
