@@ -1,3 +1,5 @@
+import chainsJson from "./data/chains.json";
+
 /**
  * Represents a single item within the game. An item might be a part of a {@link Chain}.
  */
@@ -65,38 +67,7 @@ export function createChainData(
 function findChainById(chainId: string): Chain | undefined {
   return CHAINS.find((c) => c.id === chainId);
 }
-/**
- * TODO: This is a temporary hard-coded list of chains. In the future, this should be loaded from * a JSON file.
- */
-export const CHAINS: Chain[] = [
-  {
-    id: "crystal-shards",
-    name: "Crystal Shards ",
-    levels: [
-      { level: 1, name: "Crystal Shard" },
-      { level: 2, name: "Chipped Crystal" },
-      { level: 3, name: "Polished Crystal" },
-      { level: 4, name: "Flawless Crystal" },
-      { level: 5, name: "Radiant Crystal" },
-    ],
-  },
-  {
-    id: "grass",
-    name: "Grass",
-    levels: [
-      { level: 0, name: "Mysterious Seed" },
-      { level: 1, name: "Grass Tuft" },
-      { level: 2, name: "Lawn Grass" },
-      { level: 3, name: "Great Grass" },
-      { level: 4, name: "Marsh Grass" },
-      { level: 5, name: "Tall Grass" },
-      { level: 6, name: "Golden Wheatgrass" },
-      { level: 7, name: "Dragon's Whisker" },
-      { level: 8, name: "Radiant Grass" },
-      { level: "Wonder", name: "Ensnared Virtue" },
-    ],
-  },
-];
+export const CHAINS: Chain[] = chainsJson;
 
 /**
  * Computes, per goal in chainData.goals, how many of each level are still
