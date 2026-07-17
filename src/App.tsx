@@ -1,23 +1,45 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   CHAINS,
   calculateGoalNeeds,
   createChainData,
   type ChainData,
 } from "./mergeEngine";
+import { loadInventoryByChain, saveInventoryByChain } from "./storage";
 import "./App.css";
+
+// Fresh ChainData for a chain, with any inventory counts saved from a
+// previous visit layered on top (if they still match the chain's shape).
+function chainDataWithStoredInventory(chainId: string): ChainData {
+  const chainData = createChainData(chainId);
+  const storedLevelItems = loadInventoryByChain()[chainId];
+  if (storedLevelItems?.length === chainData.inventory.levelItems.length) {
+    chainData.inventory.levelItems = [...storedLevelItems];
+  }
+  return chainData;
+}
 
 function App() {
   const [currentChain, setCurrentChain] = useState(CHAINS[0]);
 
   const [chainDataMap, setChainDataMap] = useState<Record<string, ChainData>>(
     () => ({
-      [CHAINS[0].id]: createChainData(CHAINS[0].id),
+      [CHAINS[0].id]: chainDataWithStoredInventory(CHAINS[0].id),
     }),
   );
 
+  useEffect(() => {
+    const inventoryByChain: Record<string, number[]> = {};
+    for (const [chainId, data] of Object.entries(chainDataMap)) {
+      inventoryByChain[chainId] = data.inventory.levelItems;
+    }
+    saveInventoryByChain(inventoryByChain);
+  }, [chainDataMap]);
+
   const currentChainData = useMemo(
-    () => chainDataMap[currentChain.id] ?? createChainData(currentChain.id),
+    () =>
+      chainDataMap[currentChain.id] ??
+      chainDataWithStoredInventory(currentChain.id),
     [chainDataMap, currentChain.id],
   );
 
@@ -34,7 +56,7 @@ function App() {
 
     setChainDataMap((prev) => {
       const prevChainData =
-        prev[currentChain.id] ?? createChainData(currentChain.id);
+        prev[currentChain.id] ?? chainDataWithStoredInventory(currentChain.id);
       const nextLevelItems = [...prevChainData.inventory.levelItems];
       nextLevelItems[index] = nextValue;
 
@@ -56,7 +78,10 @@ function App() {
     setChainDataMap((prev) =>
       prev[nextChain.id]
         ? prev
-        : { ...prev, [nextChain.id]: createChainData(nextChain.id) },
+        : {
+            ...prev,
+            [nextChain.id]: chainDataWithStoredInventory(nextChain.id),
+          },
     );
   };
 
