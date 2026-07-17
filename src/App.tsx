@@ -7,68 +7,61 @@ import {
 } from "./mergeEngine";
 import "./App.css";
 
-function App() {
-  const [currentChain, setStateCurrentChain] = useState(CHAINS[0]);
-  // const currentChain = useMemo(
-  //   () => CHAINS.find((c) => c.id === currentChainId) ?? CHAINS[0],
-  //   [currentChainId],
-  // );
-
-  const [chainDataMap, setStateChainDataMap] = useState<
-    Record<string, ChainData>
-  >(() => ({
-    [currentChain.id]: createChainData(currentChain.id, true),
-  }));
-
-  const updateChainData = (chainId: string, newData: ChainData) => {
-    setStateChainDataMap((prev) => ({
-      ...prev,
-      [chainId]: newData,
-    }));
+// calculateChainData mutates the ChainData it's given (it sets goal.needed
+// in place), so we hand it a clone rather than the object living in state.
+// That keeps React state immutable, which is what useMemo/useState expect.
+function cloneChainData(data: ChainData): ChainData {
+  return {
+    chainId: data.chainId,
+    inventory: { levelItems: [...data.inventory.levelItems] },
+    goals: data.goals.map((goal) => ({ ...goal, wanted: [...goal.wanted] })),
   };
+}
+
+function App() {
+  const [currentChain, setCurrentChain] = useState(CHAINS[0]);
+
+  const [chainDataMap, setChainDataMap] = useState<Record<string, ChainData>>(
+    () => ({
+      [CHAINS[0].id]: createChainData(CHAINS[0].id),
+    }),
+  );
 
   const currentChainData = useMemo(() => {
-    return calculateChainData(currentChain.id, chainDataMap[currentChain.id]);
+    const stored =
+      chainDataMap[currentChain.id] ?? createChainData(currentChain.id);
+    return calculateChainData(currentChain.id, cloneChainData(stored));
   }, [chainDataMap, currentChain.id]);
 
   const setHave = (index: number, value: number) => {
-    console.log("setHave: ", index, value, "for", currentChain.id);
-    currentChainData.inventory.levelItems[index] = Math.max(
-      0,
-      Math.floor(value) || 0,
-    );
+    const nextValue = Math.max(0, Math.floor(value) || 0);
+    console.log("setHave:", index, nextValue, "for", currentChain.id);
 
-    console.log(
-      "setHave`",
-      index,
-      value,
-      "for",
-      currentChain.id,
-      "calling updateChainData",
-    );
+    setChainDataMap((prev) => {
+      const prevChainData =
+        prev[currentChain.id] ?? createChainData(currentChain.id);
+      const nextLevelItems = [...prevChainData.inventory.levelItems];
+      nextLevelItems[index] = nextValue;
 
-    updateChainData(
-      currentChain.id,
-      calculateChainData(currentChain.id, chainDataMap[currentChain.id]),
-    );
+      return {
+        ...prev,
+        [currentChain.id]: {
+          ...prevChainData,
+          inventory: { levelItems: nextLevelItems },
+        },
+      };
+    });
   };
 
   const handleChainChange = (id: string) => {
     console.log("handleChainChange from", currentChain.id, "to", id);
     const nextChain = CHAINS.find((c) => c.id === id) ?? CHAINS[0];
-    setStateCurrentChain(nextChain);
+    setCurrentChain(nextChain);
 
-    // I don't think we need to do anything else.
-    // if (!chainDataMap[nextChain.id]) {
-    //   updateChainData(nextChain.id, createChainData(nextChain.id));
-    // }
-    // updateChainData(
-    //   nextChain.id,
-    //   calculateChainData(chainDataMap[currentChain.id]),
-    // );
-    console.log(
-      "handleChainChange: after setCurrentChain we have: ",
-      currentChain.id,
+    setChainDataMap((prev) =>
+      prev[nextChain.id]
+        ? prev
+        : { ...prev, [nextChain.id]: createChainData(nextChain.id) },
     );
   };
 
