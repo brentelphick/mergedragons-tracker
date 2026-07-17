@@ -1,151 +1,137 @@
-export interface Tier {
-  id: number;
+/**
+ * Represents a single item within the game. An item might be a part of a {@link Chain}.
+ */
+export interface Item {
+  level: number | string;
   name: string;
-  /** Can this tier be produced by merging 3 of tier (id - 1)? */
-  merge3: boolean;
-  /** Can this tier be produced by merging 5 of tier (id - 2)? */
-  merge5: boolean;
+  description?: string;
+  image?: string;
 }
 
 export interface Chain {
   id: string;
   name: string;
-  tiers: Tier[];
+  levels: Item[];
 }
 
-export type Strategy = "3-only" | "5-only" | "mixed";
+export interface Inventory {
+  levelItems: number[];
+  // TODO: allow dimensional jars
+}
 
-export interface TierResult {
-  tierId: number;
+export interface Goal {
   name: string;
-  need: number;
-  have: number;
-  deficit: number;
-  method: "3" | "5" | null;
-  consumesFromLowerTier: number;
+  description: string;
+  wanted: number[];
+  needed?: number[];
 }
 
-export interface CalculationResult {
-  strategy: Strategy;
-  goalTierId: number;
-  goalQty: number;
-  rows: TierResult[];
-  baseItemsNeeded: number;
+export interface ChainData {
+  chainId: string;
+  inventory: Inventory;
+  goals: Goal[];
 }
 
+export function createChainData(
+  chainId: string,
+  forUseState: boolean = false,
+): ChainData {
+  const chain = findChainById(chainId);
+  console.log("createChainData for ", chainId, "forUseState:", forUseState);
+  if (!chain) {
+    throw new Error(`Chain with id ${chainId} not found`);
+  }
+
+  let chainData: ChainData = {
+    chainId,
+    inventory: { levelItems: new Array<number>(chain.levels.length).fill(0) },
+    goals: [
+      {
+        name: "1 of each",
+        description: "1 of each",
+        wanted: new Array<number>(chain.levels.length).fill(1),
+      },
+      {
+        name: "1 of max",
+        description: "1 of max",
+        wanted: new Array<number>(chain.levels.length).fill(0),
+      },
+    ],
+  };
+  chainData.goals[0].needed = [...chainData.goals[0].wanted];
+  chainData.goals[1].wanted[chain.levels.length - 1] = 1;
+  chainData.goals[1].needed = [...chainData.goals[1].wanted];
+  console.log("createChainData", chainData);
+  return chainData;
+}
+
+function findChainById(chainId: string): Chain | undefined {
+  return CHAINS.find((c) => c.id === chainId);
+}
+/**
+ * TODO: This is a temporary hard-coded list of chains. In the future, this should be loaded from * a JSON file.
+ */
 export const CHAINS: Chain[] = [
   {
     id: "crystal-shards",
-    name: "Crystal Shards (Dragon Breeding)",
-    tiers: [
-      { id: 1, name: "Crystal Shard", merge3: false, merge5: false },
-      { id: 2, name: "Chipped Crystal", merge3: true, merge5: false },
-      { id: 3, name: "Polished Crystal", merge3: true, merge5: true },
-      { id: 4, name: "Flawless Crystal", merge3: true, merge5: true },
-      { id: 5, name: "Radiant Crystal", merge3: true, merge5: true },
+    name: "Crystal Shards ",
+    levels: [
+      { level: 1, name: "Crystal Shard" },
+      { level: 2, name: "Chipped Crystal" },
+      { level: 3, name: "Polished Crystal" },
+      { level: 4, name: "Flawless Crystal" },
+      { level: 5, name: "Radiant Crystal" },
     ],
   },
   {
     id: "grass",
     name: "Grass",
-    tiers: [
-      { id: 1, name: "Grass Tuft", merge3: false, merge5: false },
-      { id: 2, name: "Lawn Grass", merge3: true, merge5: false },
-      { id: 3, name: "Great Grass", merge3: true, merge5: true },
-      { id: 4, name: "Marsh Grass", merge3: true, merge5: true },
-      { id: 5, name: "Tall Grass", merge3: true, merge5: true },
+    levels: [
+      { level: 0, name: "Mysterious Seed" },
+      { level: 1, name: "Grass Tuft" },
+      { level: 2, name: "Lawn Grass" },
+      { level: 3, name: "Great Grass" },
+      { level: 4, name: "Marsh Grass" },
+      { level: 5, name: "Tall Grass" },
+      { level: 6, name: "Golden Wheatgrass" },
+      { level: 7, name: "Dragon's Whisker" },
+      { level: 8, name: "Radiant Grass" },
+      { level: "Wonder", name: "Ensnared Virtue" },
     ],
   },
 ];
 
-/**
- * For each tier above 1, decide which merge method produces it under the
- * given strategy, and the resulting cost in tier-1 items per unit.
- * 5-merges skip a tier (T-2 -> T), so they're compared against two
- * successive 3-merges when picking the cheaper "mixed" option.
- */
-function computeCostsAndMethods(tiers: Tier[], strategy: Strategy) {
-  const sorted = [...tiers].sort((a, b) => a.id - b.id);
-  const maxId = sorted[sorted.length - 1].id;
-  const byId = new Map(sorted.map((t) => [t.id, t]));
-
-  const cost = new Array<number>(maxId + 1).fill(0);
-  const method = new Array<"3" | "5" | null>(maxId + 1).fill(null);
-  cost[1] = 1;
-
-  for (let t = 2; t <= maxId; t++) {
-    const tier = byId.get(t);
-    if (!tier) continue;
-    const options: { m: "3" | "5"; c: number }[] = [];
-    if (tier.merge3) options.push({ m: "3", c: 3 * cost[t - 1] });
-    if (tier.merge5 && t >= 3) options.push({ m: "5", c: 5 * cost[t - 2] });
-
-    let chosen = options[0];
-    if (strategy === "3-only") {
-      chosen = options.find((o) => o.m === "3") ?? options[0];
-    } else if (strategy === "5-only") {
-      chosen =
-        options.find((o) => o.m === "5") ??
-        options.find((o) => o.m === "3") ??
-        options[0];
-    } else {
-      chosen = options.reduce(
-        (best, o) => (o.c < best.c ? o : best),
-        options[0],
-      );
-    }
-    cost[t] = chosen.c;
-    method[t] = chosen.m;
+export function calculateChainData(
+  chainId: string,
+  chainInfo: ChainData,
+): ChainData {
+  // Implementation for calculate2
+  if (!chainInfo) {
+    chainInfo = createChainData(chainId);
   }
 
-  return { cost, method, maxId, byId };
+  console.log("calculateChainData", chainId, chainInfo);
+  for (let goal of chainInfo.goals) {
+    goal.needed = computeNeeded(chainInfo.inventory.levelItems, goal.wanted);
+  }
+  return chainInfo;
 }
 
-export function calculate(
-  chain: Chain,
-  inventory: Record<number, number>,
-  goalTierId: number,
-  goalQty: number,
-  strategy: Strategy,
-): CalculationResult {
-  const { method, maxId, byId } = computeCostsAndMethods(chain.tiers, strategy);
+function computeNeeded(have: number[], wanted: number[]): number[] | undefined {
+  const needed: number[] = [...wanted];
+  let index = needed.length - 1;
+  needed[index] = Math.max(0, wanted[index] - have[index]);
+  // Start from the highest level and work downwards.
+  for (; index >= 0; index--) {
+    let needFromLevelAbove = needed[index + 1] ?? 0;
+    // We know how many we need at this level based on the number still needed from the level above, and the additional number we want at this level and the number we already have at this level.
+    let needThisLevel =
+      Math.trunc(needFromLevelAbove / 2) * 5 + // Currently only calculate optimal merging. 5 merge where we can and 3 merge for any remainder.
+      (needFromLevelAbove % 2) * 3 +
+      wanted[index] -
+      have[index];
 
-  const needed = new Array<number>(maxId + 1).fill(0);
-  needed[goalTierId] = goalQty;
-
-  const rows: TierResult[] = [];
-  for (let t = Math.min(goalTierId, maxId); t >= 1; t--) {
-    const tier = byId.get(t);
-    if (!tier) continue;
-    const have = inventory[t] ?? 0;
-    const need = needed[t] ?? 0;
-    const deficit = Math.max(0, need - have);
-
-    let usedMethod: "3" | "5" | null = null;
-    let consumesFromLowerTier = 0;
-    if (deficit > 0 && t > 1) {
-      usedMethod = method[t];
-      consumesFromLowerTier = usedMethod === "5" ? deficit * 5 : deficit * 3;
-      if (usedMethod === "3") {
-        needed[t - 1] = (needed[t - 1] ?? 0) + deficit * 3;
-      } else if (usedMethod === "5") {
-        needed[t - 2] = (needed[t - 2] ?? 0) + deficit * 5;
-      }
-    }
-
-    rows.push({
-      tierId: t,
-      name: tier.name,
-      need,
-      have,
-      deficit,
-      method: usedMethod,
-      consumesFromLowerTier,
-    });
+    needed[index] = Math.max(0, needThisLevel);
   }
-
-  const tier1Row = rows[rows.length - 1];
-  const baseItemsNeeded = tier1Row?.tierId === 1 ? tier1Row.deficit : 0;
-
-  return { strategy, goalTierId, goalQty, rows, baseItemsNeeded };
+  return needed;
 }
