@@ -1,3 +1,15 @@
+# Merge Chain Calculator
+
+A calculator for Merge Dragons! merge chains: enter what you have, set a goal, and see how many base items you're still short, accounting for optimal merging.
+
+## License
+
+The code in this repository is licensed under the [MIT License](LICENSE).
+
+`src/data/chains.json` contains item names and descriptions referencing Merge Dragons!, which is not covered by that license — it's third-party game data, included here for informational/reference purposes only. See the in-app disclaimer for details. This project is an unofficial fan-made tool, not affiliated with, endorsed by, or sponsored by Gram Games or Zynga.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.

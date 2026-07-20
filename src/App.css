@@ -190,3 +190,13 @@ input[type="number"]:focus {
 .results-table tr:last-child td {
   border-bottom: none;
 }
+
+.disclaimer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+}

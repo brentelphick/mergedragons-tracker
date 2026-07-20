@@ -172,6 +172,14 @@ function App() {
           </table>
         </section>
       </main>
+
+      <footer className="disclaimer">
+        Merge Chain Calculator is an unofficial fan-made tool, not
+        affiliated with, endorsed by, or sponsored by Gram Games or Zynga.
+        Item names and descriptions reference Merge Dragons!, a trademark
+        of its respective owner, and are used here for informational
+        purposes only. Free, non-commercial project.
+      </footer>
     </div>
   );
 }

@@ -6,80 +6,67 @@
       {
         "level": 0,
         "name": "Dragon Tree Leaf",
-        "description": "This leaf has a mystical energy!",
-        "image": ""
+        "description": "This leaf has a mystical energy!"
       },
       {
         "level": 0,
         "name": "Dragon Tree Seeds",
-        "description": "Worth trading a cow for.",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/0.png"
+        "description": "Worth trading a cow for."
       },
       {
         "level": 1,
         "name": "Dragon Tree Sapling",
-        "description": "This sapling is destined for great things.",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/1.png"
+        "description": "This sapling is destined for great things."
       },
       {
         "level": 2,
         "name": "Sprouting Dragon Tree",
-        "description": "Each Dragon Tree is said to have a dragon's spirit living within.",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/2.png"
+        "description": "Each Dragon Tree is said to have a dragon's spirit living within."
       },
       {
         "level": 3,
         "name": "Young Dragon Tree",
-        "description": "Dragon Trees can live for tens of thousands of years.",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/3.png"
+        "description": "Dragon Trees can live for tens of thousands of years."
       },
       {
         "level": 4,
         "name": "Vermillion Dragon Tree",
-        "description": "An endless source of Wood!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/4.png"
+        "description": "An endless source of Wood!"
       },
       {
         "level": 5,
         "name": "Nice Dragon Tree",
-        "description": "An endless source of Wood and treasures!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/5.png"
+        "description": "An endless source of Wood and treasures!"
       },
       {
         "level": 6,
         "name": "Aged Dragon Tree",
-        "description": "An endless source of Wood and loot!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/6.png"
+        "description": "An endless source of Wood and loot!"
       },
       {
         "level": 7,
         "name": "Elder Dragon Tree",
-        "description": "An endless source of Wood and riches!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/7.png"
+        "description": "An endless source of Wood and riches!"
       },
       {
         "level": 8,
         "name": "Ancient Dragon Tree",
-        "description": "An endless source of Wood and wealth!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/8.png"
+        "description": "An endless source of Wood and wealth!"
       },
       {
         "level": 9,
         "name": "Arcane Dragon Tree",
-        "description": "An endless source of Wood and fortune!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/9.png"
+        "description": "An endless source of Wood and fortune!"
       },
       {
         "level": 10,
         "name": "Legendary Dragon Tree",
-        "description": "An endless source of Wood and wild bounties!",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/10.png"
+        "description": "An endless source of Wood and wild bounties!"
       },
       {
         "level": "Wonder",
         "name": "Remains of The Dragon God",
-        "description": "Here lies Bahamut. Wonder #1 of the Merge Dragon World",
-        "image": "https://mergeling.com/assets/mergechains/dragon_trees/11.png"
+        "description": "Here lies Bahamut. Wonder #1 of the Merge Dragon World"
       }
     ]
   },
@@ -191,32 +178,27 @@
       {
         "level": 1,
         "name": "The Gromblin",
-        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge.",
-        "image": "https://mergeling.com/assets/mergechains/mythical_idols/1.png"
+        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge."
       },
       {
         "level": 2,
         "name": "The Capricorn",
-        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge.",
-        "image": "https://mergeling.com/assets/mergechains/mythical_idols/2.png"
+        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge."
       },
       {
         "level": 3,
         "name": "The Dragon Idol",
-        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge.",
-        "image": "https://mergeling.com/assets/mergechains/mythical_idols/3.png"
+        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge."
       },
       {
         "level": 4,
         "name": "The Rising Phoenix",
-        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge.",
-        "image": "https://mergeling.com/assets/mergechains/mythical_idols/4.png"
+        "description": "A Mysterious Idol. Can Tap once for an Egg. Then Merge."
       },
       {
         "level": 5,
         "name": "The Mythical Pegasus Idol",
-        "description": "The Pinnacle of Idols. Can Tap once for an Egg.",
-        "image": "https://mergeling.com/assets/mergechains/mythical_idols/5.png"
+        "description": "The Pinnacle of Idols. Can Tap once for an Egg."
       }
     ]
   },
