@@ -124,7 +124,7 @@ function App() {
             <thead>
               <tr>
                 <th>Level</th>
-                <th>Name</th>
+                <th>Item</th>
                 <th>Have</th>
                 {currentChainData.goals.map((goal, index) => (
                   <th key={index}>{goal.name}</th>
@@ -134,8 +134,24 @@ function App() {
             <tbody>
               {currentChainData.inventory.levelItems.map((_, index) => (
                 <tr key={index}>
-                  <td>{index}</td>
-                  <td>{currentChain.levels[index]?.name}</td>
+                  <td>{currentChain.levels[index]?.level}</td>
+                  <td>
+                    <div className="item-cell">
+                      {currentChain.levels[index]?.image && (
+                        <img
+                          className="item-image"
+                          src={currentChain.levels[index].image}
+                          alt=""
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                          }}
+                        />
+                      )}
+                      <span className="item-name">
+                        {currentChain.levels[index]?.name}
+                      </span>
+                    </div>
+                  </td>
                   <td>
                     <input
                       type="number"
@@ -146,7 +162,9 @@ function App() {
                     />
                   </td>
                   {currentChainData.goals.map((_, goalIndex) => (
-                    <td key={goalIndex}>{goalNeeds[goalIndex]?.[index] ?? 0}</td>
+                    <td key={goalIndex}>
+                      {goalNeeds[goalIndex]?.[index] ?? 0}
+                    </td>
                   ))}
                 </tr>
               ))}

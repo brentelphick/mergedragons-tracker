@@ -8,6 +8,7 @@ export interface Item {
   name: string;
   description?: string;
   image?: string;
+  tags?: string[];
 }
 
 export interface Chain {
@@ -33,12 +34,8 @@ export interface ChainData {
   goals: Goal[];
 }
 
-export function createChainData(
-  chainId: string,
-  forUseState: boolean = false,
-): ChainData {
+export function createChainData(chainId: string): ChainData {
   const chain = findChainById(chainId);
-  console.log("createChainData for ", chainId, "forUseState:", forUseState);
   if (!chain) {
     throw new Error(`Chain with id ${chainId} not found`);
   }
@@ -60,7 +57,6 @@ export function createChainData(
     ],
   };
   chainData.goals[1].wanted[chain.levels.length - 1] = 1;
-  console.log("createChainData", chainData);
   return chainData;
 }
 
