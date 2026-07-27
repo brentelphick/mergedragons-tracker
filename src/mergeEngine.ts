@@ -85,7 +85,7 @@ export function calculateGoalNeeds(chainData: ChainData): number[][] {
 }
 
 function computeNeeded(
-  chain: Chain,
+  _chain: Chain,
   have: number[],
   wanted: number[],
 ): number[] {
