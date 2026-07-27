@@ -134,13 +134,16 @@ function App() {
             <tbody>
               {currentChainData.inventory.levelItems.map((_, index) => (
                 <tr key={index}>
-                  <td>{currentChain.levels[index]?.level}</td>
+                  <td>
+                    {currentChain.items[index].levelDisplay ||
+                      currentChain.items[index].level}
+                  </td>
                   <td>
                     <div className="item-cell">
-                      {currentChain.levels[index]?.image && (
+                      {currentChain.items[index]?.image && (
                         <img
                           className="item-image"
-                          src={currentChain.levels[index].image}
+                          src={currentChain.items[index].image}
                           alt=""
                           onError={(e) => {
                             e.currentTarget.style.display = "none";
@@ -148,7 +151,7 @@ function App() {
                         />
                       )}
                       <span className="item-name">
-                        {currentChain.levels[index]?.name}
+                        {currentChain.items[index]?.name}
                       </span>
                     </div>
                   </td>
@@ -174,11 +177,11 @@ function App() {
       </main>
 
       <footer className="disclaimer">
-        Merge Chain Calculator is an unofficial fan-made tool, not
-        affiliated with, endorsed by, or sponsored by Gram Games or Zynga.
-        Item names and descriptions reference Merge Dragons!, a trademark
-        of its respective owner, and are used here for informational
-        purposes only. Free, non-commercial project.
+        Merge Chain Calculator is an unofficial fan-made tool, not affiliated
+        with, endorsed by, or sponsored by Gram Games or Zynga. Item names and
+        descriptions reference Merge Dragons!, a trademark of its respective
+        owner, and are used here for informational purposes only. Free,
+        non-commercial project.
       </footer>
     </div>
   );

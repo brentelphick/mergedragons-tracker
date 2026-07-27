@@ -2,7 +2,7 @@
   {
     "id": "dragon-trees",
     "name": "Dragon Trees",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Dragon Tree Leaf",
@@ -64,7 +64,8 @@
         "description": "An endless source of Wood and wild bounties!"
       },
       {
-        "level": "Wonder",
+        "level": 11,
+        "levelDisplay": "Wonder",
         "name": "Remains of The Dragon God",
         "description": "Here lies Bahamut. Wonder #1 of the Merge Dragon World"
       }
@@ -73,7 +74,7 @@
   {
     "id": "life-flowers",
     "name": "Life Flowers",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Life Flower Seed",
@@ -165,7 +166,8 @@
         "description": "Harvest for Giant Life Orb."
       },
       {
-        "level": "Wonder",
+        "level": 18,
+        "levelDisplay": "Wonder",
         "name": "Rainbow",
         "description": "The Rainbow of Creation. Wonder #2 of the Merge Dragon World."
       }
@@ -174,7 +176,7 @@
   {
     "id": "mythical-idols",
     "name": "Mythical Idols",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "The Gromblin",
@@ -205,7 +207,7 @@
   {
     "id": "shadow-trees",
     "name": "Shadow Trees",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Specter Leaf",
@@ -266,7 +268,7 @@
   {
     "id": "nirvana-temples",
     "name": "Nirvana Temples",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Small Nirvana Temple"
@@ -316,7 +318,8 @@
         "name": "Utopia"
       },
       {
-        "level": "Wonder",
+        "level": 13,
+        "levelDisplay": "Wonder",
         "name": "Elysium"
       }
     ]
@@ -324,7 +327,7 @@
   {
     "id": "magnificent-artefacts",
     "name": "Magnificent Artefacts",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Soul Crescent Artefact"
@@ -342,7 +345,8 @@
         "name": "Midnight Artefact"
       },
       {
-        "level": "Wonder",
+        "level": 5,
+        "levelDisplay": "Wonder",
         "name": "The Last Relic Artefact"
       }
     ]
@@ -350,7 +354,7 @@
   {
     "id": "zen-temples",
     "name": "Zen Temples",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Small Zen Temple"
@@ -400,7 +404,8 @@
         "name": "Shangri-La"
       },
       {
-        "level": "Wonder",
+        "level": 13,
+        "levelDisplay": "Wonder",
         "name": "Shambala"
       }
     ]
@@ -408,7 +413,7 @@
   {
     "id": "bulbs",
     "name": "Bulbs",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Bulb Bunch",
@@ -445,7 +450,8 @@
         "description": "Is that a shining light? Can sometimes Tap for Bulb Bunches"
       },
       {
-        "level": "Wonder",
+        "level": 7,
+        "levelDisplay": "Wonder",
         "name": "Brilliant Bulb",
         "description": "Wonder #22 of the Dragon World. Tap for premium eggs & nests."
       }
@@ -454,7 +460,7 @@
   {
     "id": "gaia-statues",
     "name": "Gaia Statues",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Destroyed Gaia Statue",
@@ -480,7 +486,7 @@
   {
     "id": "mystic-topiaries",
     "name": "Mystic Topiaries",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Bunny Topiary"
@@ -506,11 +512,13 @@
         "name": "Dolphin Topiary"
       },
       {
-        "level": "Wonder",
+        "level": 7,
+        "levelDisplay": "Wonder",
         "name": "Lilac Unicorn Topiary"
       },
       {
-        "level": "Wonder",
+        "level": 8,
+        "levelDisplay": "Wonder",
         "name": "Magnificent Dragon Topiary"
       }
     ]
@@ -518,7 +526,7 @@
   {
     "id": "bonus-points",
     "name": "Bonus Points",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "3 Points",
@@ -589,7 +597,7 @@
   {
     "id": "fruit-trees",
     "name": "Fruit Trees",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Leaf of a Fruit Tree",
@@ -651,7 +659,8 @@
         "description": "Can sometimes tap for Watermelons."
       },
       {
-        "level": "Wonder",
+        "level": 11,
+        "levelDisplay": "Wonder",
         "name": "Magic Beanstalk",
         "description": "Leads to the Heavens. Wonder #8 of the Merge Dragon World"
       }
@@ -660,7 +669,7 @@
   {
     "id": "autumn-trees",
     "name": "Autumn Trees",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Autumn Leaf",
@@ -721,7 +730,7 @@
   {
     "id": "aquamarine-statues",
     "name": "Aquamarine Statues",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Embellished Llama",
@@ -762,7 +771,7 @@
   {
     "id": "midas-trees",
     "name": "Midas Trees",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Golden Seeds",
@@ -824,7 +833,8 @@
         "description": "These crystals resonate with an energy that bring life to the world."
       },
       {
-        "level": "Wonder",
+        "level": 12,
+        "levelDisplay": "Wonder",
         "name": "Bearer of the World Crystal",
         "description": "Wonder #15. This tree can commune with the World Crystal it protects."
       }
@@ -833,7 +843,7 @@
   {
     "id": "misty-mountains",
     "name": "Misty Mountains",
-    "levels": [
+    "items": [
       {
         "level": 5,
         "name": "Cloudy Summit",
@@ -849,7 +859,7 @@
   {
     "id": "monster-idols",
     "name": "Monster Idols",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Kattryx",
@@ -880,7 +890,7 @@
   {
     "id": "mushrooms",
     "name": "Mushrooms",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Mushroom Caps",
@@ -937,7 +947,8 @@
         "description": "Do NOT merge this mushroom! Or maybe you should..."
       },
       {
-        "level": "Wonder",
+        "level": 11,
+        "levelDisplay": "Wonder",
         "name": "Dragonfire Shroom Forest",
         "description": "Over 5 millenia old! Wonder #11 of the Dragon World."
       }
@@ -946,7 +957,7 @@
   {
     "id": "fungus-logs",
     "name": "Fungus Logs",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Fungus Log",
@@ -962,7 +973,7 @@
   {
     "id": "basic-soul-crystals",
     "name": "Basic Soul Crystals",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Basic Soul Crystal Shard",
@@ -988,7 +999,7 @@
   {
     "id": "opal-trees",
     "name": "Opal Trees",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Sacred Fir",
@@ -1009,7 +1020,7 @@
   {
     "id": "bushes",
     "name": "Bushes",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Shrub Sprouts",
@@ -1036,7 +1047,8 @@
         "description": "Harvest for Mushroom Caps."
       },
       {
-        "level": "Wonder",
+        "level": 6,
+        "levelDisplay": "Wonder",
         "name": "Ruins of the Sky Palace",
         "description": "All that's left of the Sky Palace. Wonder #10 of the Dragon World"
       }
@@ -1045,7 +1057,7 @@
   {
     "id": "gnomes",
     "name": "Gnomes",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Pinecone Gnome",
@@ -1086,7 +1098,7 @@
   {
     "id": "ornate-gold-statues",
     "name": "Ornate Gold Statues",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Ornate Llama",
@@ -1127,7 +1139,7 @@
   {
     "id": "golden-apples",
     "name": "Golden Apples",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Golden Apple",
@@ -1148,7 +1160,7 @@
   {
     "id": "jeweled-precious-statues",
     "name": "Jeweled Precious Statues",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Sapphire Eagle",
@@ -1177,9 +1189,9 @@
     ]
   },
   {
-    "id": "pricesless-statues",
+    "id": "priceless-statues",
     "name": "Priceless Statues",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Periodot Osprey",
@@ -1210,7 +1222,7 @@
   {
     "id": "grass",
     "name": "Grass",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Mysterious Seed",
@@ -1257,7 +1269,8 @@
         "description": "Harvest for Moss Covered Stones."
       },
       {
-        "level": "Wonder",
+        "level": 9,
+        "levelDisplay": "Wonder",
         "name": "Ensnared Virtue",
         "description": "The Sword that Slayed Bahamut. Wonder #3 of the Dragon World."
       }
@@ -1266,7 +1279,7 @@
   {
     "id": "graves",
     "name": "Graves",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Fresh Grave",
@@ -1312,7 +1325,7 @@
   {
     "id": "grimm-trees",
     "name": "Grimm Trees",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Grimm Seed",
@@ -1373,7 +1386,7 @@
   {
     "id": "haunted-houses",
     "name": "Haunted Houses",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Fresh Graveyard"
@@ -1423,7 +1436,7 @@
   {
     "id": "healing-goddesses",
     "name": "Healing Goddesses",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Minor Goddess of Healing",
@@ -1454,7 +1467,7 @@
   {
     "id": "hills",
     "name": "Hills",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Topsoil",
@@ -1506,7 +1519,8 @@
         "description": "Merging sometimes gives a rare Cloudy Summit."
       },
       {
-        "level": "Wonder",
+        "level": 10,
+        "levelDisplay": "Wonder",
         "name": "Fountain of Youth",
         "description": "Full of everlasting Life. Wonder #4 of the Dragon World."
       }
@@ -1515,7 +1529,7 @@
   {
     "id": "chocolate-fountains",
     "name": "Chocolate Fountains",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Cocoa Bean",
@@ -1562,7 +1576,8 @@
         "description": "An amazing flow of chocolate, ripe with dipped berries!"
       },
       {
-        "level": "Wonder",
+        "level": 10,
+        "levelDisplay": "Wonder",
         "name": "The Chocolate Spring",
         "description": "A towering monument to all things sweet. Wonder #20 of Dragonia."
       }
@@ -1571,7 +1586,7 @@
   {
     "id": "honey",
     "name": "Honey",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Tiny Honeycomb",
@@ -1618,7 +1633,8 @@
         "description": "An amazing source of Honey and other treasures!"
       },
       {
-        "level": "Wonder",
+        "level": 10,
+        "levelDisplay": "Wonder",
         "name": "Sanctuary of Bees",
         "description": "The legendary home of bees. Wonder #16 of the Dragon World."
       }
@@ -1627,7 +1643,7 @@
   {
     "id": "life-orbs",
     "name": "Life Orbs",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Life Essence"
@@ -1673,7 +1689,7 @@
   {
     "id": "dipped-berries",
     "name": "Dipped Berries",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Choco Dipped Berry",
@@ -1694,7 +1710,7 @@
   {
     "id": "living-stones",
     "name": "Living Stones",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Fresh Stones",
@@ -1746,7 +1762,8 @@
         "description": "Harvest for a Nightstone Brick."
       },
       {
-        "level": "Wonder",
+        "level": 11,
+        "levelDisplay": "Wonder",
         "name": "Stonehenge",
         "description": "Ancient Burial Site... it feels cold. Wonder #5 of the Dragon World."
       }
@@ -1755,7 +1772,7 @@
   {
     "id": "lobelia-topiaries",
     "name": "Lobelia Topiaries",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Cobalt Cottontail Topiary",
@@ -1787,12 +1804,14 @@
         "description": "Leaping towards the sky, also gives 10x Premium Eggs."
       },
       {
-        "level": "Wonder",
+        "level": 7,
+        "levelDisplay": "Wonder",
         "name": "Enchanted Horn Topiary",
         "description": "Wonder #18 of the Dragon World! Gives 20x Premium Eggs."
       },
       {
-        "level": "Wonder",
+        "level": 8,
+        "levelDisplay": "Wonder",
         "name": "Blushing Wyvern Topiary",
         "description": "Shy and loyal, also gives 40x Premium Eggs."
       }
@@ -1801,7 +1820,7 @@
   {
     "id": "magic-coin-storage",
     "name": "Magic Coin Storage",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Tattered Coin Vault",
@@ -1847,7 +1866,7 @@
   {
     "id": "magic-currency",
     "name": "Magic Currency",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Tiny Magic Coin",
@@ -1898,7 +1917,7 @@
   {
     "id": "magic-mushrooms",
     "name": "Magic Mushrooms",
-    "levels": [
+    "items": [
       {
         "level": 0,
         "name": "Magic Mushroom Caps",
@@ -1950,7 +1969,8 @@
         "description": "A city of sentient mushrooms."
       },
       {
-        "level": "Wonder",
+        "level": 10,
+        "levelDisplay": "Wonder",
         "name": "The Golden Mushroom",
         "description": "Incredible! A shroom of pure gold. Wonder #9 of the Dragon World."
       }
@@ -1959,7 +1979,7 @@
   {
     "id": "secret-fountains",
     "name": "Secret Fountains",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Secret Lifespring",
@@ -1973,65 +1993,9 @@
     ]
   },
   {
-    "id": "fairy-mushrooms",
-    "name": "Fairy Mushrooms",
-    "levels": [
-      {
-        "level": 1,
-        "name": "Tiny Red Spotted Mushroom",
-        "description": "Tap to collect, or Merge. Worth 1 Point in the event."
-      },
-      {
-        "level": 2,
-        "name": "Red Spotted Mushroom",
-        "description": "Tap to collect, or Merge. Worth 4 Points in the event."
-      },
-      {
-        "level": 3,
-        "name": "Uncommon Purple Mushroom",
-        "description": "Tap to collect, or Merge. Worth 15 Points in the event."
-      },
-      {
-        "level": 4,
-        "name": "Magic Blue Mushroom",
-        "description": "Tap to collect, or Merge. Worth 50 Points in the event."
-      },
-      {
-        "level": 5,
-        "name": "Rainbow Mushroom",
-        "description": "Tap to collect, or Merge. Worth 175 Points in the event."
-      },
-      {
-        "level": 6,
-        "name": "Mushroom Flower",
-        "description": "Tap to collect, or Merge. Worth 550 Points in the event."
-      },
-      {
-        "level": 7,
-        "name": "Mushroom Bloom",
-        "description": "Tap to collect, or Merge. Worth 1,750 Points in the event."
-      },
-      {
-        "level": 8,
-        "name": "Mystic Blue Mushroom",
-        "description": "Tap to collect, or Merge. Worth 5,500 Points in the event."
-      },
-      {
-        "level": 9,
-        "name": "Mystic Mushrooms",
-        "description": "Incredible! Tap to collect, or Merge. Worth 20,000 Points in the event."
-      },
-      {
-        "level": 10,
-        "name": "King Mushroom",
-        "description": "Out of this world! Tap to collect. Worth 75,000 Points in the event."
-      }
-    ]
-  },
-  {
     "id": "shimmer-fountains",
     "name": "Shimmer Fountains",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Fountain of Legend",
@@ -2067,7 +2031,7 @@
   {
     "id": "water",
     "name": "Water",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Rain Puddle",
@@ -2109,7 +2073,8 @@
         "description": "Grass may grow nearby, or something magical..."
       },
       {
-        "level": "Wonder",
+        "level": 9,
+        "levelDisplay": "Wonder",
         "name": "Bottled Ocean",
         "description": "An entire ocean captured within. Wonder #6 of the Dragon World."
       }
@@ -2118,7 +2083,7 @@
   {
     "id": "stone-storage",
     "name": "Stone Storage",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Tattered Stone Yard",
@@ -2164,7 +2129,7 @@
   {
     "id": "small-fluffs",
     "name": "Small Fluffs",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Ground Fluff",
@@ -2190,7 +2155,7 @@
   {
     "id": "wishing-well-coins",
     "name": "Wishing Well Coins",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Schilling",
@@ -2221,7 +2186,7 @@
   {
     "id": "wood",
     "name": "Wood",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Elderwood",
@@ -2247,7 +2212,7 @@
   {
     "id": "spirit-lanterns",
     "name": "Spirit Lanterns",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Funky Blue Cheese",
@@ -2283,7 +2248,7 @@
   {
     "id": "spirit-rose",
     "name": "Spirit Rose",
-    "levels": [
+    "items": [
       {
         "level": 1,
         "name": "Thorny Bloom",
@@ -2304,7 +2269,7 @@
   {
     "id": "spooky-trees",
     "name": "Spooky Trees",
-    "levels": [
+    "items": [
       {
         "level": 2,
         "name": "Undead Tree",

@@ -4,7 +4,8 @@ import chainsJson from "./data/chains.json";
  * Represents a single item within the game. An item might be a part of a {@link Chain}.
  */
 export interface Item {
-  level: number | string;
+  level: number;
+  levelDisplay?: string;
   name: string;
   description?: string;
   image?: string;
@@ -14,7 +15,7 @@ export interface Item {
 export interface Chain {
   id: string;
   name: string;
-  levels: Item[];
+  items: Item[];
 }
 
 export interface Inventory {
@@ -42,21 +43,21 @@ export function createChainData(chainId: string): ChainData {
 
   let chainData: ChainData = {
     chainId,
-    inventory: { levelItems: new Array<number>(chain.levels.length).fill(0) },
+    inventory: { levelItems: new Array<number>(chain.items.length).fill(0) },
     goals: [
       {
         name: "1 of each",
         description: "1 of each",
-        wanted: new Array<number>(chain.levels.length).fill(1),
+        wanted: new Array<number>(chain.items.length).fill(1),
       },
       {
         name: "1 of max",
         description: "1 of max",
-        wanted: new Array<number>(chain.levels.length).fill(0),
+        wanted: new Array<number>(chain.items.length).fill(0),
       },
     ],
   };
-  chainData.goals[1].wanted[chain.levels.length - 1] = 1;
+  chainData.goals[1].wanted[chain.items.length - 1] = 1;
   return chainData;
 }
 
@@ -73,12 +74,21 @@ export const CHAINS: Chain[] = chainsJson;
  * localStorage, with nothing stale or computed mixed in.
  */
 export function calculateGoalNeeds(chainData: ChainData): number[][] {
+  let chain = findChainById(chainData.chainId);
+  if (!chain) {
+    throw new Error(`Chain with id ${chainData.chainId} not found`);
+  }
+
   return chainData.goals.map((goal) =>
-    computeNeeded(chainData.inventory.levelItems, goal.wanted),
+    computeNeeded(chain, chainData.inventory.levelItems, goal.wanted),
   );
 }
 
-function computeNeeded(have: number[], wanted: number[]): number[] {
+function computeNeeded(
+  chain: Chain,
+  have: number[],
+  wanted: number[],
+): number[] {
   const needed: number[] = [...wanted];
   let index = needed.length - 1;
   needed[index] = Math.max(0, wanted[index] - have[index]);
